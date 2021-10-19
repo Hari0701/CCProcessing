@@ -1,26 +1,29 @@
-const express = require('express');
+const express = require("express");
+const mongoose = require("mongoose");
+const Products = require("../models/Product");
 const router = express.Router();
-const Product = require('../models/Product');
-router.get('/', (req, res) => {
-    res.send("I am @ post");
+router.get("/", async (req, res) => {
+  try {
+    const productpost = await Products.find();
+    res.json(productpost);
+  } catch (err) {
+    res.json({ message: err });
+  }
 });
-router.post('/', (req, res) => {
 
-    const product = new Product({
-        title: req.body.title,
-        description: req.body.description,
-        price: req.body.price,
-        quantity: req.body.quantity,
-        mandate: req.body.mandate,
-        expdate: req.body.expdate
-    });
-    console.log(post);
-    product.save()
-        .then(data => {
-            res.json(data);
-        })
-        .catch(err => {
-            res.json({ message: err })
-        });
+router.post("/", async (req, res) => {
+  const productpost = new Products({
+    title: req.body.title,
+    price: req.body.price,
+    quantity: req.body.quantity,
+  });
+  try {
+    const savedPost = await productpost.save();
+    console.log(savedPost);
+    res.json(savedPost);
+  } catch (err) {
+    res.json({ message: err });
+  }
 });
+
 module.exports = router;

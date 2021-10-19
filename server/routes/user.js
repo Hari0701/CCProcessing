@@ -1,23 +1,18 @@
-const express = require('express');
+const express = require("express");
+const userPost = require("../models/User");
 const router = express.Router();
-const User = require('../models/User');
-router.get('/', (req, res) => {
-    res.send("I am @ post");
-});
-router.post('/', (req, res) => {
 
-    const user = new User({
-        cardnumber: req.body.cardnumber,
-        pin: req.body.pin,
-        balance: req.body.balance
-    });
-    console.log(post);
-    user.save()
-        .then(data => {
-            res.json(data);
-        })
-        .catch(err => {
-            res.json({ message: err })
-        });
+router.get("/:cardNumber/:pin", async (req, res) => {
+  try {
+    const userpost = await userPost.findOne(
+      { cardnumber: `${req.params.cardNumber}` },
+      { pin: `${req.params.pin}` }
+    );
+   
+    res.json(userpost);
+  } catch (err) {
+    res.json({ message: err });
+  }
 });
-module.exports = router;
+ 
+module.exports = router
