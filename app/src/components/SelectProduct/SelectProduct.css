@@ -88,6 +88,13 @@
     margin-right: 10px;
     color: #f39c12;
 }
+.doneBtn {
+    font-size: 17px;
+    margin-top: 30px;
+    background-color: #f39c12;
+    width: 150px;
+    margin-left: 34%;
+}
 .yourItems {
     color: #163f63;
     text-align: center;

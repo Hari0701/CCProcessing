@@ -4,22 +4,34 @@ import { AiOutlineDelete } from 'react-icons/ai';
 import './SelectProduct.css';
 import axios from 'axios';
 import bg from '../../images/shopping.jpg';
+import Login from "../Login/Login"
 
 const SelectProduct = () => {
     const [item, setItem] = useState();
     let [allItems, setAllItems] = useState([]);
     const [products, setProducts] = useState([]);
-    const [amount, setAmount] = useState(0);
     allItems = allItems.filter((allItem) => allItem);
+    
+    let amount = 0;
+    let counts = {};
+
+    allItems.forEach(function(x) { counts[x] = (counts[x] || 0)+1; });
+    products.map((product) => {
+        return Object.keys(counts).find((item) => {
+            if (product.title === item) {
+                return (amount += product.price * counts[`${item}`]);
+            }
+        });
+    });
     const handleAddItem = () => {
         setAllItems([...allItems, item]);
-        
     };
     const handleDelete = (id) => {
         const newItems = [...allItems];
         newItems.splice(id, 1);
         setAllItems(newItems);
     };
+ 
     useEffect(() => {
         const fetchData = async () => {
             await axios
@@ -34,6 +46,7 @@ const SelectProduct = () => {
         fetchData();
     }, []);
     return (
+        <div>
         <div className="addProductPage">
             <div>
                 <img src={bg} alt="shopping cart" className="cart" />
@@ -48,7 +61,6 @@ const SelectProduct = () => {
                             value={item}
                             onChange={(e) => setItem(e.target.value)}
                         >
-                     
                             {products.map((product) => (
                                 <option>{product.title}</option>
                             ))}
@@ -70,7 +82,9 @@ const SelectProduct = () => {
                     </div>
                     <h2 className="yourItems">Total Amount: {amount}</h2>
                 </div>
+                <button className = "doneBtn" >Done</button>
             </div>
+        </div>
         </div>
     );
 };

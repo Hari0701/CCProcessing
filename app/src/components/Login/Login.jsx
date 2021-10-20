@@ -1,7 +1,7 @@
 import React from "react";
 import "./Login.css";
 import creditcard from "../../images/creditcard.jpeg"
-export default function Login() {
+export default function Login(props) {
   return (
     <div className="creditcard">
       <div>
@@ -24,7 +24,9 @@ export default function Login() {
           
           </div>
         </form>
+        
         <footer>
+        <h3>Total Amount : {props.amount}</h3>
           <button>Continue</button>
         </footer>
       </div>

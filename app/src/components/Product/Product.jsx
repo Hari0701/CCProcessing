@@ -28,7 +28,7 @@ export default function Product() {
                             <h2>{product.title}</h2>
                             <p>Available: {product.quantity}</p>
                             <a href="#" className="btn btn-primary btn-block">
-                                {product.price}
+                               ${product.price}
                             </a>
                         </div>
                     </article>
