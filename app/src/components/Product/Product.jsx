@@ -26,7 +26,6 @@ export default function Product() {
                         <img src={product.imageUrl} alt={product.title} />
                         <div className="text">
                             <h2>{product.title}</h2>
-                            <p>Available: {product.quantity}</p>
                             <a href="#" className="btn btn-primary btn-block">
                                ${product.price}
                             </a>

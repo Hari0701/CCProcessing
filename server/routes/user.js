@@ -2,17 +2,24 @@ const express = require("express");
 const userPost = require("../models/User");
 const router = express.Router();
 
-router.get("/:cardNumber/:pin", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    const userpost = await userPost.findOne(
-      { cardnumber: `${req.params.cardNumber}` },
-      { pin: `${req.params.pin}` }
-    );
-   
+    const userpost = await userPost.find();
+
     res.json(userpost);
   } catch (err) {
     res.json({ message: err });
   }
 });
- 
-module.exports = router
+router.patch("/:cardnumber", async (req, res) => {
+  try {
+    const userpost = await userPost.updateOne(
+      { cardnumber: req.params.cardnumber },
+      { $set: { balance: req.body.balance } }
+    );
+    res.json(userpost);
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
+module.exports = router;

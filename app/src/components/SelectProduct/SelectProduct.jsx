@@ -62,6 +62,7 @@ const SelectProduct = () => {
                             value={item}
                             onChange={(e) => setItem(e.target.value)}
                         >
+                        <option>Select Product</option>
                             {products.map((product) => (
                                 <option>{product.title}</option>
                             ))}
@@ -81,7 +82,7 @@ const SelectProduct = () => {
                                 </div>
                             ))}
                     </div>
-                    <h2 className="yourItems">Total Amount: {amount}</h2>
+                    <h2 className="yourItems">Total Amount: ${amount}</h2>
                 </div>
                 <Link to ={{pathname: '/check',Amount: amount}}  > <button className = "doneBtn">Done</button></Link>
             </div>
