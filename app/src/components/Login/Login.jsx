@@ -26,7 +26,7 @@ export default function Login(props) {
         </form>
         
         <footer>
-        <h3>Total Amount : {props.amount}</h3>
+        <h3>Total Amount : {props.location.Amount}</h3>
           <button>Continue</button>
         </footer>
       </div>

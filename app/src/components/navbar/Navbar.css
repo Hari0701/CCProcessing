@@ -1,0 +1,42 @@
+/*~~~~~~~~~~~~~~~~~~~~~~ Nav Bar starts ~~~~~~~~~~~~~~~~~~~~~~*/
+.navbar {
+    background: linear-gradient(93deg, rgba(68, 179, 226, 1) 16%, rgba(94, 129, 207, 1) 55%);
+    height: 70px;
+    max-width: 100%;
+}
+label.logo {
+    color: cornsilk;
+    font-size: 35px;
+    font-weight: bold;
+    line-height: 60px;
+    margin-left: 40px;
+}
+.navItems {
+    float: right;
+    margin-right: 50px;
+    margin-top: -10px;
+}
+.navItem {
+    display: inline-block;
+
+    margin: 0px 20px;
+}
+
+.Link {
+    color: wheat;
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+.hamberger-btn {
+    font-size: 35px;
+    color: white;
+    float: right;
+    margin-right: 30px;
+    line-height: 60px;
+    cursor: pointer;
+    display: none;
+}
+#check {
+    display: none;
+}

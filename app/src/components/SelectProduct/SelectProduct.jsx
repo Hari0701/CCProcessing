@@ -5,6 +5,7 @@ import './SelectProduct.css';
 import axios from 'axios';
 import bg from '../../images/shopping.jpg';
 import Login from "../Login/Login"
+import { Link } from 'react-router-dom';
 
 const SelectProduct = () => {
     const [item, setItem] = useState();
@@ -82,7 +83,7 @@ const SelectProduct = () => {
                     </div>
                     <h2 className="yourItems">Total Amount: {amount}</h2>
                 </div>
-                <button className = "doneBtn" >Done</button>
+                <Link to ={{pathname: '/check',Amount: amount}}  > <button className = "doneBtn">Done</button></Link>
             </div>
         </div>
         </div>
